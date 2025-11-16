@@ -1,0 +1,433 @@
+command,usage,category,description
+BITCOUNT,BITCOUNT key [ start [ end [ BYTE | BIT ] ] ],BitmapOperations on the Bitmap data type,Counts the number of set bits (population counting) in a string.
+BITFIELD,BITFIELD mystring SET i8 #0 100 SET i8 #1 200,BitmapOperations on the Bitmap data type,Performs arbitrary bitfield integer operations on strings.
+BITFIELD_RO,BITFIELD_RO,BitmapOperations on the Bitmap data type,Performs arbitrary read-only bitfield integer operations on strings.
+BITOP,BITOP 〈 AND | OR | XOR | NOT 〉 destkey key [ key ... ],BitmapOperations on the Bitmap data type,"Performs bitwise operations on multiple strings, and stores the result."
+BITPOS,BITPOS key bit [ start [ end [ BYTE | BIT ] ] ],BitmapOperations on the Bitmap data type,Finds the first set (1) or clear (0) bit in a string.
+GETBIT,GETBIT key offset,BitmapOperations on the Bitmap data type,Returns a bit value by offset.
+SETBIT,SETBIT key offset value,BitmapOperations on the Bitmap data type,Sets or clears the bit at offset of the string value. Creates the key if it doesn't exist.
+BF.ADD,BF.ADD,Bloom filterOperations on the Bloom filter data type,Add a single item to a bloom filter. The bloom filter is created if it doesn't exist
+BF.CARD,BF.CARD,Bloom filterOperations on the Bloom filter data type,Returns the cardinality of a bloom filter
+BF.EXISTS,BF.EXISTS,Bloom filterOperations on the Bloom filter data type,Determines if the bloom filter contains the specified item
+BF.INFO,BF.INFO,Bloom filterOperations on the Bloom filter data type,Returns usage information and properties of a specific bloom filter
+BF.INSERT,BF.INSERT,Bloom filterOperations on the Bloom filter data type,Creates a bloom filter with 0 or more items or adds items to an existing bloom filter
+BF.LOAD,BF.LOAD,Bloom filterOperations on the Bloom filter data type,Restores a bloom filter in a single operation. The command is only generated during AOF Rewrite of bloom filters
+BF.MADD,BF.MADD,Bloom filterOperations on the Bloom filter data type,Adds one or more items to a bloom filter. The bloom filter is created if it doesn't exist
+BF.MEXISTS,BF.MEXISTS,Bloom filterOperations on the Bloom filter data type,Determines if the bloom filter contains one or more items
+BF.RESERVE,BF.RESERVE,Bloom filterOperations on the Bloom filter data type,Creates an empty bloom filter with the specified properties
+ASKING,ASKING,ClusterValkey Cluster management,Signals that a cluster client is following an -ASK redirect.
+CLUSTER,CLUSTER,ClusterValkey Cluster management,A container for Cluster commands.
+CLUSTER ADDSLOTS,CLUSTER ADDSLOTS slot [ slot ... ],ClusterValkey Cluster management,Assigns new hash slots to a node.
+CLUSTER ADDSLOTSRANGE,CLUSTER ADDSLOTSRANGE start-slot end-slot [ start-slot end-slot ... ],ClusterValkey Cluster management,Assigns new hash slot ranges to a node.
+CLUSTER BUMPEPOCH,CLUSTER BUMPEPOCH,ClusterValkey Cluster management,Advances the cluster config epoch.
+CLUSTER CANCELSLOTMIGRATIONS,CLUSTER CANCELSLOTMIGRATIONS,ClusterValkey Cluster management,Cancel all current ongoing slot migration operations.
+CLUSTER COUNT-FAILURE-REPORTS,CLUSTER COUNT-FAILURE-REPORTS node-id,ClusterValkey Cluster management,Returns the number of active failure reports for a node. No new reports are created once the node is marked as failed.
+CLUSTER COUNTKEYSINSLOT,CLUSTER COUNTKEYSINSLOT slot,ClusterValkey Cluster management,Returns the number of keys in a hash slot.
+CLUSTER DELSLOTS,CLUSTER DELSLOTS slot [ slot ... ],ClusterValkey Cluster management,Sets hash slots as unbound for a node.
+CLUSTER DELSLOTSRANGE,CLUSTER DELSLOTSRANGE start-slot end-slot [ start-slot end-slot ... ],ClusterValkey Cluster management,Sets hash slot ranges as unbound for a node.
+CLUSTER FAILOVER,CLUSTER FAILOVER [ FORCE | TAKEOVER ],ClusterValkey Cluster management,Forces a replica to perform a manual failover of its primary.
+CLUSTER FLUSHSLOTS,CLUSTER FLUSHSLOTS,ClusterValkey Cluster management,Deletes all slots information from a node.
+CLUSTER FORGET,CLUSTER FORGET node-id,ClusterValkey Cluster management,Removes a node from the nodes table.
+CLUSTER GETKEYSINSLOT,CLUSTER GETKEYSINSLOT slot count,ClusterValkey Cluster management,Returns the key names in a hash slot.
+CLUSTER GETSLOTMIGRATIONS,CLUSTER GETSLOTMIGRATIONS,ClusterValkey Cluster management,Get the status of ongoing and recently finished slot import and export operations.
+CLUSTER HELP,CLUSTER HELP,ClusterValkey Cluster management,Returns helpful text about the different subcommands.
+CLUSTER INFO,CLUSTER INFO,ClusterValkey Cluster management,Returns information about the state of a node.
+CLUSTER KEYSLOT,CLUSTER KEYSLOT key,ClusterValkey Cluster management,Returns the hash slot for a key.
+CLUSTER LINKS,CLUSTER LINKS,ClusterValkey Cluster management,Returns a list of all TCP links to and from peer nodes.
+CLUSTER MEET,CLUSTER MEET ip port [ cluster-bus-port ],ClusterValkey Cluster management,Forces a node to handshake with another node.
+CLUSTER MIGRATESLOTS,CLUSTER MIGRATESLOTS SLOTSRANGE start-slot end-slot [ start-slot end-slot ... ] NODE node-id [ SLOTSRANGE start-slot end-slot [ start-slot end-slot ... ] NODE node-id ... ],ClusterValkey Cluster management,Migrate the given slots from this node to the specified nodes.
+CLUSTER MYID,CLUSTER MYID,ClusterValkey Cluster management,Returns the ID of a node.
+CLUSTER MYSHARDID,CLUSTER MYSHARDID,ClusterValkey Cluster management,Returns the shard ID of a node.
+CLUSTER NODES,CLUSTER NODES,ClusterValkey Cluster management,Returns the cluster configuration for a node.
+CLUSTER REPLICAS,CLUSTER REPLICAS node-id,ClusterValkey Cluster management,Lists the replica nodes of a primary node.
+CLUSTER REPLICATE,CLUSTER REPLICATE 〈 node-id | NO ONE 〉,ClusterValkey Cluster management,Configure a node as replica of a primary node or detach a replica from its primary.
+CLUSTER RESET,CLUSTER RESET [ HARD | SOFT ],ClusterValkey Cluster management,Resets a node.
+CLUSTER SAVECONFIG,CLUSTER SAVECONFIG,ClusterValkey Cluster management,Forces a node to save the cluster configuration to disk.
+CLUSTER SET-CONFIG-EPOCH,CLUSTER SET-CONFIG-EPOCH config-epoch,ClusterValkey Cluster management,Sets the configuration epoch for a new node.
+CLUSTER SETSLOT,CLUSTER SETSLOT slot [MIGRATING|IMPORTING|NODE] node-id [TIMEOUT timeout],ClusterValkey Cluster management,Binds a hash slot to a node.
+CLUSTER SHARDS,CLUSTER SHARDS,ClusterValkey Cluster management,Returns the mapping of cluster slots to shards.
+CLUSTER SLAVES,CLUSTER SLAVES node-id,ClusterValkey Cluster management,Lists the replica nodes of a primary node.
+CLUSTER SLOT-STATS,CLUSTER SLOT-STATS 〈 SLOTSRANGE start-slot end-slot | ORDERBY metric [ LIMIT limit ] [ ASC | DESC ] 〉,ClusterValkey Cluster management,Return an array of slot usage statistics for slots assigned to the current node.
+CLUSTER SLOTS,CLUSTER SLOTS,ClusterValkey Cluster management,Returns the mapping of cluster slots to nodes.
+CLUSTER SYNCSLOTS,CLUSTER SYNCSLOTS,ClusterValkey Cluster management,A container for internal slot migration commands.
+READONLY,READONLY,ClusterValkey Cluster management,Enables read-only queries for a connection to a Valkey replica node.
+READWRITE,READWRITE,ClusterValkey Cluster management,Enables read-write queries for a connection to a Valkey replica node.
+AUTH,AUTH <username> <password>,ConnectionClient connections management,Authenticates the connection.
+CLIENT,CLIENT,ConnectionClient connections management,A container for client connection commands.
+CLIENT CACHING,CLIENT CACHING 〈 YES | NO 〉,ConnectionClient connections management,Instructs the server whether to track the keys in the next request.
+CLIENT CAPA,CLIENT CAPA capability [ capability ... ],ConnectionClient connections management,A client claims its capability.
+CLIENT GETNAME,CLIENT GETNAME,ConnectionClient connections management,Returns the name of the connection.
+CLIENT GETREDIR,CLIENT GETREDIR,ConnectionClient connections management,Returns the client ID to which the connection's tracking notifications are redirected.
+CLIENT HELP,CLIENT HELP,ConnectionClient connections management,Returns helpful text about the different subcommands.
+CLIENT ID,CLIENT ID,ConnectionClient connections management,Returns the unique client ID of the connection.
+CLIENT IMPORT-SOURCE,CLIENT IMPORT-SOURCE 〈 ON | OFF 〉,ConnectionClient connections management,Mark this client as an import source when server is in import mode.
+CLIENT INFO,CLIENT INFO,ConnectionClient connections management,Returns information about the connection.
+CLIENT KILL,CLIENT KILL addr:port,ConnectionClient connections management,Terminates open connections.
+CLIENT LIST,CLIENT LIST,ConnectionClient connections management,Lists open connections.
+CLIENT NO-EVICT,CLIENT NO-EVICT 〈 ON | OFF 〉,ConnectionClient connections management,Sets the client eviction mode of the connection.
+CLIENT NO-TOUCH,CLIENT NO-TOUCH 〈 ON | OFF 〉,ConnectionClient connections management,Controls whether commands sent by the client affect the LRU/LFU of accessed keys.
+CLIENT PAUSE,CLIENT PAUSE timeout [ WRITE | ALL ],ConnectionClient connections management,Suspends commands processing.
+CLIENT REPLY,CLIENT REPLY 〈 ON | OFF | SKIP 〉,ConnectionClient connections management,Instructs the server whether to reply to commands.
+CLIENT SETINFO,CLIENT SETINFO 〈 lib-name libname | lib-ver libver 〉,ConnectionClient connections management,Sets information specific to the client or connection.
+CLIENT SETNAME,CLIENT SETNAME connection-name,ConnectionClient connections management,Sets the connection name.
+CLIENT TRACKING,CLIENT TRACKING on ... options ...,ConnectionClient connections management,Controls server-assisted client-side caching for the connection.
+CLIENT TRACKINGINFO,CLIENT TRACKINGINFO,ConnectionClient connections management,Returns information about server-assisted client-side caching for the connection.
+CLIENT UNBLOCK,CLIENT UNBLOCK client-id [ TIMEOUT | ERROR ],ConnectionClient connections management,Unblocks a client blocked by a blocking command from a different connection.
+CLIENT UNPAUSE,CLIENT UNPAUSE,ConnectionClient connections management,Resumes processing commands from paused clients.
+ECHO,ECHO message,ConnectionClient connections management,Returns the given string.
+HELLO,HELLO [ protover [ AUTH username password ] [ SETNAME clientname ] ],ConnectionClient connections management,Handshakes with the server.
+PING,PING [ message ],ConnectionClient connections management,Returns the server's liveliness response.
+QUIT,QUIT,ConnectionClient connections management,Closes the connection.
+RESET,RESET,ConnectionClient connections management,Resets the connection.
+SELECT,SELECT index,ConnectionClient connections management,Changes the selected database.
+COPY,COPY source destination [ DB destination-db ] [ REPLACE ],GenericGeneric commands,Copies the value of a key to a new key.
+DEL,DEL key [ key ... ],GenericGeneric commands,Deletes one or more keys.
+DUMP,DUMP key,GenericGeneric commands,Returns a serialized representation of the value stored at a key.
+EXISTS,EXISTS key [ key ... ],GenericGeneric commands,Determines whether one or more keys exist.
+EXPIRE,EXPIRE key seconds [ NX | XX | GT | LT ],GenericGeneric commands,Sets the expiration time of a key in seconds.
+EXPIREAT,EXPIREAT key unix-time-seconds [ NX | XX | GT | LT ],GenericGeneric commands,Sets the expiration time of a key to a Unix timestamp.
+EXPIRETIME,EXPIRETIME key,GenericGeneric commands,Returns the expiration time of a key as a Unix timestamp.
+KEYS,KEYS pattern,GenericGeneric commands,Returns all key names that match a pattern.
+MIGRATE,"MIGRATE 192.168.1.34 6379 """" 0 5000 KEYS key1 key2 key3",GenericGeneric commands,Atomically transfers a key from one instance to another.
+MOVE,MOVE key db,GenericGeneric commands,Moves a key to another database.
+OBJECT,OBJECT,GenericGeneric commands,A container for object introspection commands.
+OBJECT ENCODING,OBJECT ENCODING key,GenericGeneric commands,Returns the internal encoding of an object.
+OBJECT FREQ,OBJECT FREQ key,GenericGeneric commands,Returns the logarithmic access frequency counter of an object.
+OBJECT HELP,OBJECT HELP,GenericGeneric commands,Returns helpful text about the different subcommands.
+OBJECT IDLETIME,OBJECT IDLETIME key,GenericGeneric commands,Returns the time since the last access to an object.
+OBJECT REFCOUNT,OBJECT REFCOUNT key,GenericGeneric commands,Returns the reference count of a value of a key.
+PERSIST,PERSIST key,GenericGeneric commands,Removes the expiration time of a key.
+PEXPIRE,PEXPIRE key milliseconds [ NX | XX | GT | LT ],GenericGeneric commands,Sets the expiration time of a key in milliseconds.
+PEXPIREAT,PEXPIREAT key unix-time-milliseconds [ NX | XX | GT | LT ],GenericGeneric commands,Sets the expiration time of a key to a Unix milliseconds timestamp.
+PEXPIRETIME,PEXPIRETIME key,GenericGeneric commands,Returns the expiration time of a key as a Unix milliseconds timestamp.
+PTTL,PTTL key,GenericGeneric commands,Returns the expiration time in milliseconds of a key.
+RANDOMKEY,RANDOMKEY,GenericGeneric commands,Returns a random key name from the database.
+RENAME,RENAME key newkey,GenericGeneric commands,Renames a key and overwrites the destination.
+RENAMENX,RENAMENX key newkey,GenericGeneric commands,Renames a key only when the target key name doesn't exist.
+RESTORE,RESTORE key ttl serialized-value [ REPLACE ] [ ABSTTL ] [ IDLETIME seconds ] [ FREQ frequency ],GenericGeneric commands,Creates a key from the serialized representation of a value.
+SCAN,SCAN cursor [ MATCH pattern ] [ COUNT count ] [ TYPE type ],GenericGeneric commands,Iterates over the key names in the database.
+SORT,SORT mylist,GenericGeneric commands,"Sorts the elements in a list, a set, or a sorted set, optionally storing the result."
+SORT_RO,SORT_RO,GenericGeneric commands,"Returns the sorted elements of a list, a set, or a sorted set."
+TOUCH,TOUCH key [ key ... ],GenericGeneric commands,Returns the number of existing keys out of those specified after updating the time they were last accessed.
+TTL,TTL key,GenericGeneric commands,Returns the expiration time in seconds of a key.
+TYPE,TYPE key,GenericGeneric commands,Determines the type of value stored at a key.
+UNLINK,UNLINK key [ key ... ],GenericGeneric commands,Asynchronously deletes one or more keys.
+WAIT,WAIT numreplicas timeout,GenericGeneric commands,Blocks until the asynchronous replication of all preceding write commands sent by the connection is completed.
+WAITAOF,WAITAOF numlocal numreplicas timeout,GenericGeneric commands,Blocks until all of the preceding write commands sent by the connection are written to the append-only file of the primary and/or replicas.
+GEOADD,GEOADD key [ NX | XX ] [ CH ] longitude latitude member [ longitude latitude member ... ],Geospatial indicesOperations on the Geospatial Index data type,Adds one or more members to a geospatial index. The key is created if it doesn't exist.
+GEODIST,GEODIST key member1 member2 [ m | km | ft | mi ],Geospatial indicesOperations on the Geospatial Index data type,Returns the distance between two members of a geospatial index.
+GEOHASH,GEOHASH key [ member ] [ [ member ] ... ],Geospatial indicesOperations on the Geospatial Index data type,Returns members from a geospatial index as geohash strings.
+GEOPOS,GEOPOS key [ member ] [ [ member ] ... ],Geospatial indicesOperations on the Geospatial Index data type,Returns the longitude and latitude of members from a geospatial index.
+GEORADIUS,GEORADIUS key longitude latitude radius 〈 m | km | ft | mi 〉 [ WITHCOORD ] [ WITHDIST ] [ WITHHASH ] [ COUNT count [ ANY ] ] [ ASC | DESC ] [ STORE storekey | STOREDIST storedistkey ],Geospatial indicesOperations on the Geospatial Index data type,"Queries a geospatial index for members within a distance from a coordinate, optionally stores the result."
+GEORADIUSBYMEMBER,GEORADIUSBYMEMBER key member radius 〈 m | km | ft | mi 〉 [ WITHCOORD ] [ WITHDIST ] [ WITHHASH ] [ COUNT count [ ANY ] ] [ ASC | DESC ] [ STORE storekey | STOREDIST storedistkey ],Geospatial indicesOperations on the Geospatial Index data type,"Queries a geospatial index for members within a distance from a member, optionally stores the result."
+GEORADIUSBYMEMBER_RO,GEORADIUSBYMEMBER_RO,Geospatial indicesOperations on the Geospatial Index data type,Returns members from a geospatial index that are within a distance from a member.
+GEORADIUS_RO,GEORADIUS_RO,Geospatial indicesOperations on the Geospatial Index data type,Returns members from a geospatial index that are within a distance from a coordinate.
+GEOSEARCH,GEOSEARCH,Geospatial indicesOperations on the Geospatial Index data type,"Queries a geospatial index for members inside an area of a box, circle, or a polygon."
+GEOSEARCHSTORE,GEOSEARCHSTORE destination source [ FROMMEMBER member | FROMLONLAT longitude latitude ] 〈 BYRADIUS radius 〈 m | km | ft | mi 〉 | BYBOX width height 〈 m | km | ft | mi 〉 | BYPOLYGON num-vertices longitude latitude [ longitude latitude ... ] 〉 [ ASC | DESC ] [ COUNT count [ ANY ] ] [ STOREDIST ],Geospatial indicesOperations on the Geospatial Index data type,"Queries a geospatial index for members inside an area of a box, a circle, or a polygon, optionally stores the result."
+HDEL,HDEL key field [ field ... ],HashOperations on the Hash data type,Deletes one or more fields and their values from a hash. Deletes the hash if no fields remain.
+HEXISTS,HEXISTS key field,HashOperations on the Hash data type,Determines whether a field exists in a hash.
+HEXPIRE,HEXPIRE key seconds [ NX | XX | GT | LT ] FIELDS numfields field [ field ... ],HashOperations on the Hash data type,Set expiry time on hash fields.
+HEXPIREAT,HEXPIREAT key unix-time-seconds [ NX | XX | GT | LT ] FIELDS numfields field [ field ... ],HashOperations on the Hash data type,Set expiry time on hash fields.
+HEXPIRETIME,HEXPIRETIME key FIELDS numfields field [ field ... ],HashOperations on the Hash data type,Returns Unix timestamps in seconds since the epoch at which the given key's field(s) will expire
+HGET,HGET key field,HashOperations on the Hash data type,Returns the value of a field in a hash.
+HGETALL,HGETALL key,HashOperations on the Hash data type,Returns all fields and values in a hash.
+HGETEX,HGETEX key [ EX seconds | PX milliseconds | EXAT unix-time-seconds | PXAT unix-time-milliseconds | PERSIST ] FIELDS numfields field [ field ... ],HashOperations on the Hash data type,"Get the value of one or more fields of a given hash key, and optionally set their expiration time or time-to-live (TTL)."
+HINCRBY,HINCRBY key field increment,HashOperations on the Hash data type,Increments the integer value of a field in a hash by a number. Uses 0 as initial value if the field doesn't exist.
+HINCRBYFLOAT,HINCRBYFLOAT key field increment,HashOperations on the Hash data type,Increments the floating point value of a field by a number. Uses 0 as initial value if the field doesn't exist.
+HKEYS,HKEYS key,HashOperations on the Hash data type,Returns all fields in a hash.
+HLEN,HLEN key,HashOperations on the Hash data type,Returns the number of fields in a hash.
+HMGET,HMGET key field [ field ... ],HashOperations on the Hash data type,Returns the values of all fields in a hash.
+HMSET,HMSET key field value [ field value ... ],HashOperations on the Hash data type,Sets the values of multiple fields.
+HPERSIST,HPERSIST key FIELDS numfields field [ field ... ],HashOperations on the Hash data type,Remove the existing expiration on a hash key's field(s).
+HPEXPIRE,HPEXPIRE key milliseconds [ NX | XX | GT | LT ] FIELDS numfields field [ field ... ],HashOperations on the Hash data type,Set expiry time on hash object.
+HPEXPIREAT,HPEXPIREAT key unix-time-milliseconds [ NX | XX | GT | LT ] FIELDS numfields field [ field ... ],HashOperations on the Hash data type,Set expiration time on hash field.
+HPEXPIRETIME,HPEXPIRETIME key FIELDS numfields field [ field ... ],HashOperations on the Hash data type,Returns the Unix timestamp in milliseconds since Unix epoch at which the given key's field(s) will expire
+HPTTL,HPTTL key FIELDS numfields field [ field ... ],HashOperations on the Hash data type,Returns the remaining time to live in milliseconds of a hash key's field(s) that have an associated expiration.
+HRANDFIELD,HRANDFIELD key [ count [ WITHVALUES ] ],HashOperations on the Hash data type,Returns one or more random fields from a hash.
+HSCAN,HSCAN key cursor [ MATCH pattern ] [ COUNT count ] [ NOVALUES ],HashOperations on the Hash data type,Iterates over fields and values of a hash.
+HSET,HSET key field value [ field value ... ],HashOperations on the Hash data type,Creates or modifies the value of a field in a hash.
+HSETEX,HSETEX key [ NX | XX ] [ FNX | FXX ] [ EX seconds | PX milliseconds | EXAT unix-time-seconds | PXAT unix-time-milliseconds | KEEPTTL ] FIELDS numfields field value [ field value ... ],HashOperations on the Hash data type,"Set the value of one or more fields of a given hash key, and optionally set their expiration time."
+HSETNX,HSETNX key field value,HashOperations on the Hash data type,Sets the value of a field in a hash only when the field doesn't exist.
+HSTRLEN,HSTRLEN key field,HashOperations on the Hash data type,Returns the length of the value of a field.
+HTTL,HTTL key FIELDS numfields field [ field ... ],HashOperations on the Hash data type,Returns the remaining time to live (in seconds) of a hash key's field(s) that have an associated expiration.
+HVALS,HVALS key,HashOperations on the Hash data type,Returns all values in a hash.
+PFADD,PFADD key [ element ] [ [ element ] ... ],HyperLogLogOperations on the HyperLogLog data type,Adds elements to a HyperLogLog key. Creates the key if it doesn't exist.
+PFCOUNT,PFCOUNT key [ key ... ],HyperLogLogOperations on the HyperLogLog data type,Returns the approximated cardinality of the set(s) observed by the HyperLogLog key(s).
+PFDEBUG,PFDEBUG subcommand key,HyperLogLogOperations on the HyperLogLog data type,Internal commands for debugging HyperLogLog values.
+PFMERGE,PFMERGE destkey [ sourcekey ] [ [ sourcekey ] ... ],HyperLogLogOperations on the HyperLogLog data type,Merges one or more HyperLogLog values into a single key.
+PFSELFTEST,PFSELFTEST,HyperLogLogOperations on the HyperLogLog data type,An internal command for testing HyperLogLog values.
+JSON.ARRAPPEND,JSON.ARRAPPEND,JSONOperations on the JSON data type,Append one or more values to the array values at the path.
+JSON.ARRINDEX,JSON.ARRINDEX,JSONOperations on the JSON data type,Search for the first occurrence of a scalar JSON value in arrays located at the specified path. Indices out of range are adjusted.
+JSON.ARRINSERT,JSON.ARRINSERT,JSONOperations on the JSON data type,Insert one or more values into an array at the given path before the specified index.
+JSON.ARRLEN,JSON.ARRLEN,JSONOperations on the JSON data type,Get length of the array at the path.
+JSON.ARRPOP,JSON.ARRPOP,JSONOperations on the JSON data type,Remove and returns the element at the given index. Popping an empty array returns null.
+JSON.ARRTRIM,JSON.ARRTRIM,JSONOperations on the JSON data type,"Trim the array at the path so that it becomes subarray [start, end], both inclusive."
+JSON.CLEAR,JSON.CLEAR,JSONOperations on the JSON data type,Clear the arrays or an object at the specified path.
+JSON.DEBUG,JSON.DEBUG,JSONOperations on the JSON data type,"Reports information. Supported subcommands are: MEMORY, DEPTH, FIELDS, HELP"
+JSON.DEL,JSON.DEL,JSONOperations on the JSON data type,Delete the JSON values at the specified path in a document key.
+JSON.FORGET,JSON.FORGET,JSONOperations on the JSON data type,An alias of JSON.DEL.
+JSON.GET,JSON.GET,JSONOperations on the JSON data type,Get the serialized JSON at one or multiple paths.
+JSON.MGET,JSON.MGET,JSONOperations on the JSON data type,Get serialized JSONs at the path from multiple document keys. Return null for non-existent key or JSON path.
+JSON.MSET,JSON.MSET,JSONOperations on the JSON data type,Set multiple JSON values at the path to multiple keys.
+JSON.NUMINCRBY,JSON.NUMINCRBY,JSONOperations on the JSON data type,Increment the number values at the path by a given number.
+JSON.NUMMULTBY,JSON.NUMMULTBY,JSONOperations on the JSON data type,Multiply the numeric values at the path by a given number.
+JSON.OBJKEYS,JSON.OBJKEYS,JSONOperations on the JSON data type,Retrieve the key names from the objects at the specified path.
+JSON.OBJLEN,JSON.OBJLEN,JSONOperations on the JSON data type,Get the number of keys in the object at the specified path.
+JSON.RESP,JSON.RESP,JSONOperations on the JSON data type,Return the JSON value at the given path in Redis Serialization Protocol (RESP).
+JSON.SET,JSON.SET,JSONOperations on the JSON data type,Set JSON values at the specified path.
+JSON.STRAPPEND,JSON.STRAPPEND,JSONOperations on the JSON data type,Append a string to the JSON strings at the specified path.
+JSON.STRLEN,JSON.STRLEN,JSONOperations on the JSON data type,Get the length of the JSON string values at the specified path.
+JSON.TOGGLE,JSON.TOGGLE,JSONOperations on the JSON data type,Toggle boolean values between true and false at the specified path.
+JSON.TYPE,JSON.TYPE,JSONOperations on the JSON data type,Report the type of the values at the given path.
+BLMOVE,BLMOVE source destination 〈 LEFT | RIGHT 〉 〈 LEFT | RIGHT 〉 timeout,ListOperations on the List data type,"Pops an element from a list, pushes it to another list and returns it. Blocks until an element is available otherwise. Deletes the list if the last element was moved."
+BLMPOP,BLMPOP timeout numkeys key [ key ... ] 〈 LEFT | RIGHT 〉 [ COUNT count ],ListOperations on the List data type,Pops the first element from one of multiple lists. Blocks until an element is available otherwise. Deletes the list if the last element was popped.
+BLPOP,BLPOP list1 list2 list3 0,ListOperations on the List data type,Removes and returns the first element in a list. Blocks until an element is available otherwise. Deletes the list if the last element was popped.
+BRPOP,BRPOP key [ key ... ] timeout,ListOperations on the List data type,Removes and returns the last element in a list. Blocks until an element is available otherwise. Deletes the list if the last element was popped.
+BRPOPLPUSH,BRPOPLPUSH source destination timeout,ListOperations on the List data type,"Pops an element from a list, pushes it to another list and returns it. Block until an element is available otherwise. Deletes the list if the last element was popped."
+LINDEX,LINDEX key index,ListOperations on the List data type,Returns an element from a list by its index.
+LINSERT,LINSERT key 〈 BEFORE | AFTER 〉 pivot element,ListOperations on the List data type,Inserts an element before or after another element in a list.
+LLEN,LLEN key,ListOperations on the List data type,Returns the length of a list.
+LMOVE,LMOVE source destination 〈 LEFT | RIGHT 〉 〈 LEFT | RIGHT 〉,ListOperations on the List data type,Returns an element after popping it from one list and pushing it to another. Deletes the list if the last element was moved.
+LMPOP,LMPOP numkeys key [ key ... ] 〈 LEFT | RIGHT 〉 [ COUNT count ],ListOperations on the List data type,Returns multiple elements from a list after removing them. Deletes the list if the last element was popped.
+LPOP,LPOP key [ count ],ListOperations on the List data type,Returns and removes one or more elements from the beginning of a list. Deletes the list if the last element was popped.
+LPOS,LPOS key element [ RANK rank ] [ COUNT num-matches ] [ MAXLEN len ],ListOperations on the List data type,Returns the index of matching elements in a list.
+LPUSH,LPUSH key element [ element ... ],ListOperations on the List data type,Prepends one or more elements to a list. Creates the key if it doesn't exist.
+LPUSHX,LPUSHX key element [ element ... ],ListOperations on the List data type,Prepends one or more elements to a list only when the list exists.
+LRANGE,LRANGE key start stop,ListOperations on the List data type,Returns a range of elements from a list.
+LREM,LREM key count element,ListOperations on the List data type,Removes elements from a list. Deletes the list if the last element was removed.
+LSET,LSET key index element,ListOperations on the List data type,Sets the value of an element in a list by its index.
+LTRIM,LTRIM key start stop,ListOperations on the List data type,Removes elements from both ends a list. Deletes the list if all elements were trimmed.
+RPOP,RPOP key [ count ],ListOperations on the List data type,Returns and removes one or more elements from the end of a list. Deletes the list if the last element was popped.
+RPOPLPUSH,RPOPLPUSH source destination,ListOperations on the List data type,Returns the last element of a list after removing and pushing it to another list. Deletes the list if the last element was popped.
+RPUSH,RPUSH key element [ element ... ],ListOperations on the List data type,Appends one or more elements to a list. Creates the key if it doesn't exist.
+RPUSHX,RPUSHX key element [ element ... ],ListOperations on the List data type,Appends one or more elements to a list only when the list exists.
+PSUBSCRIBE,PSUBSCRIBE pattern [ pattern ... ],Pub/SubPub/Sub commands,Listens for messages published to channels that match one or more patterns.
+PUBLISH,PUBLISH channel message,Pub/SubPub/Sub commands,Posts a message to a channel.
+PUBSUB,PUBSUB,Pub/SubPub/Sub commands,A container for Pub/Sub commands.
+PUBSUB CHANNELS,PUBSUB CHANNELS [ pattern ],Pub/SubPub/Sub commands,Returns the active channels.
+PUBSUB HELP,PUBSUB HELP,Pub/SubPub/Sub commands,Returns helpful text about the different subcommands.
+PUBSUB NUMPAT,PUBSUB NUMPAT,Pub/SubPub/Sub commands,Returns a count of unique pattern subscriptions.
+PUBSUB NUMSUB,PUBSUB NUMSUB [ channel ] [ [ channel ] ... ],Pub/SubPub/Sub commands,Returns a count of subscribers to channels.
+PUBSUB SHARDCHANNELS,PUBSUB SHARDCHANNELS [ pattern ],Pub/SubPub/Sub commands,Returns the active shard channels.
+PUBSUB SHARDNUMSUB,PUBSUB SHARDNUMSUB [ shardchannel ] [ [ shardchannel ] ... ],Pub/SubPub/Sub commands,Returns the count of subscribers of shard channels.
+PUNSUBSCRIBE,PUNSUBSCRIBE [ pattern ] [ [ pattern ] ... ],Pub/SubPub/Sub commands,Stops listening to messages published to channels that match one or more patterns.
+SPUBLISH,SPUBLISH shardchannel message,Pub/SubPub/Sub commands,Post a message to a shard channel
+SSUBSCRIBE,SSUBSCRIBE shardchannel [ shardchannel ... ],Pub/SubPub/Sub commands,Listens for messages published to shard channels.
+SUBSCRIBE,SUBSCRIBE channel [ channel ... ],Pub/SubPub/Sub commands,Listens for messages published to channels.
+SUNSUBSCRIBE,SUNSUBSCRIBE [ shardchannel ] [ [ shardchannel ] ... ],Pub/SubPub/Sub commands,Stops listening to messages posted to shard channels.
+UNSUBSCRIBE,UNSUBSCRIBE [ channel ] [ [ channel ] ... ],Pub/SubPub/Sub commands,Stops listening to messages posted to channels.
+EVAL,EVAL script numkeys [ key ] [ [ key ] ... ] [ arg ] [ [ arg ] ... ],Scripting and FunctionsValkey server-side scripting and functions,Executes a server-side Lua script.
+EVALSHA,EVALSHA sha1 numkeys [ key ] [ [ key ] ... ] [ arg ] [ [ arg ] ... ],Scripting and FunctionsValkey server-side scripting and functions,Executes a server-side Lua script by SHA1 digest.
+EVALSHA_RO,EVALSHA_RO,Scripting and FunctionsValkey server-side scripting and functions,Executes a read-only server-side Lua script by SHA1 digest.
+EVAL_RO,EVAL_RO,Scripting and FunctionsValkey server-side scripting and functions,Executes a read-only server-side Lua script.
+FCALL,FCALL function numkeys [ key ] [ [ key ] ... ] [ arg ] [ [ arg ] ... ],Scripting and FunctionsValkey server-side scripting and functions,Invokes a function.
+FCALL_RO,FCALL_RO,Scripting and FunctionsValkey server-side scripting and functions,Invokes a read-only function.
+FUNCTION,FUNCTION,Scripting and FunctionsValkey server-side scripting and functions,A container for function commands.
+FUNCTION DELETE,FUNCTION DELETE library-name,Scripting and FunctionsValkey server-side scripting and functions,Deletes a library and its functions.
+FUNCTION DUMP,FUNCTION DUMP,Scripting and FunctionsValkey server-side scripting and functions,Dumps all libraries into a serialized binary payload.
+FUNCTION FLUSH,FUNCTION FLUSH [ ASYNC | SYNC ],Scripting and FunctionsValkey server-side scripting and functions,Deletes all libraries and functions.
+FUNCTION HELP,FUNCTION HELP,Scripting and FunctionsValkey server-side scripting and functions,Returns helpful text about the different subcommands.
+FUNCTION KILL,FUNCTION KILL,Scripting and FunctionsValkey server-side scripting and functions,Terminates a function during execution.
+FUNCTION LIST,FUNCTION LIST [ LIBRARYNAME library-name-pattern ] [ WITHCODE ],Scripting and FunctionsValkey server-side scripting and functions,Returns information about all libraries.
+FUNCTION LOAD,FUNCTION LOAD [ REPLACE ] function-code,Scripting and FunctionsValkey server-side scripting and functions,Creates a library.
+FUNCTION RESTORE,FUNCTION RESTORE serialized-value [ FLUSH | APPEND | REPLACE ],Scripting and FunctionsValkey server-side scripting and functions,Restores all libraries from a payload.
+FUNCTION STATS,FUNCTION STATS,Scripting and FunctionsValkey server-side scripting and functions,Returns information about a function during execution.
+SCRIPT,SCRIPT,Scripting and FunctionsValkey server-side scripting and functions,A container for Lua scripts management commands.
+SCRIPT DEBUG,SCRIPT DEBUG 〈 YES | SYNC | NO 〉 [ engine ],Scripting and FunctionsValkey server-side scripting and functions,Sets the debug mode of server-side Lua scripts.
+SCRIPT EXISTS,SCRIPT EXISTS sha1 [ sha1 ... ],Scripting and FunctionsValkey server-side scripting and functions,Determines whether server-side Lua scripts exist in the script cache.
+SCRIPT FLUSH,SCRIPT FLUSH [ ASYNC | SYNC ],Scripting and FunctionsValkey server-side scripting and functions,Removes all server-side Lua scripts from the script cache.
+SCRIPT HELP,SCRIPT HELP,Scripting and FunctionsValkey server-side scripting and functions,Returns helpful text about the different subcommands.
+SCRIPT KILL,SCRIPT KILL,Scripting and FunctionsValkey server-side scripting and functions,Terminates a server-side Lua script during execution.
+SCRIPT LOAD,SCRIPT LOAD script,Scripting and FunctionsValkey server-side scripting and functions,Loads a server-side Lua script to the script cache.
+SCRIPT SHOW,SCRIPT SHOW sha1,Scripting and FunctionsValkey server-side scripting and functions,Show server-side Lua script in the script cache.
+FT.CREATE,FT.CREATE,SearchVector Similarity Search engine optimized for AI-driven workloads,Creates an empty search index and initiates the backfill process
+FT.DROPINDEX,FT.DROPINDEX,SearchVector Similarity Search engine optimized for AI-driven workloads,Drop the index created by FT.CREATE command. It is an error if the index doesn't exist
+FT.INFO,FT.INFO,SearchVector Similarity Search engine optimized for AI-driven workloads,Detailed information about the specified index is returned
+FT.SEARCH,FT.SEARCH,SearchVector Similarity Search engine optimized for AI-driven workloads,Performs a search of the specified index. The keys which match the query expression are returned
+FT._LIST,FT._LIST,SearchVector Similarity Search engine optimized for AI-driven workloads,Lists the currently defined indexes
+ACL,ACL,ServerServer management commands,A container for Access List Control commands.
+ACL CAT,ACL SETUSER karin on +@all -@dangerous,ServerServer management commands,"Lists the ACL categories, or the commands inside a category."
+ACL DELUSER,ACL DELUSER username [ username ... ],ServerServer management commands,"Deletes ACL users, and terminates their connections."
+ACL DRYRUN,ACL DRYRUN username command [ arg ] [ [ arg ] ... ],ServerServer management commands,"Simulates the execution of a command by a user, without executing the command."
+ACL GENPASS,ACL GENPASS [ bits ],ServerServer management commands,"Generates a pseudorandom, secure password that can be used to identify ACL users."
+ACL GETUSER,ACL GETUSER username,ServerServer management commands,Lists the ACL rules of a user.
+ACL HELP,ACL HELP,ServerServer management commands,Returns helpful text about the different subcommands.
+ACL LIST,ACL LIST,ServerServer management commands,Dumps the effective rules in ACL file format.
+ACL LOAD,ACL LOAD,ServerServer management commands,Reloads the rules from the configured ACL file.
+ACL LOG,ACL LOG [ count | RESET ],ServerServer management commands,Lists recent security events generated due to ACL rules.
+ACL SAVE,ACL SAVE,ServerServer management commands,Saves the effective ACL rules in the configured ACL file.
+ACL SETUSER,ACL SETUSER virginia on allkeys +set,ServerServer management commands,Creates and modifies an ACL user and its rules.
+ACL USERS,ACL USERS,ServerServer management commands,Lists all ACL users.
+ACL WHOAMI,ACL WHOAMI,ServerServer management commands,Returns the authenticated username of the current connection.
+BGREWRITEAOF,BGREWRITEAOF,ServerServer management commands,Asynchronously rewrites the append-only file to disk.
+BGSAVE,BGSAVE [ SCHEDULE | CANCEL ],ServerServer management commands,Asynchronously saves the database(s) to disk.
+COMMAND,COMMAND,ServerServer management commands,Returns detailed information about all commands.
+COMMAND COUNT,COMMAND COUNT,ServerServer management commands,Returns a count of commands.
+COMMAND DOCS,COMMAND DOCS [ command-name ] [ [ command-name ] ... ],ServerServer management commands,"Returns documentary information about one, multiple or all commands."
+COMMAND GETKEYS,COMMAND GETKEYS command [ arg ] [ [ arg ] ... ],ServerServer management commands,Extracts the key names from an arbitrary command.
+COMMAND GETKEYSANDFLAGS,COMMAND GETKEYSANDFLAGS command [ arg ] [ [ arg ] ... ],ServerServer management commands,Extracts the key names and access flags for an arbitrary command.
+COMMAND HELP,COMMAND HELP,ServerServer management commands,Returns helpful text about the different subcommands.
+COMMAND INFO,COMMAND INFO [ command-name ] [ [ command-name ] ... ],ServerServer management commands,"Returns information about one, multiple or all commands."
+COMMAND LIST,COMMAND LIST [ FILTERBY MODULE module-name | ACLCAT category | PATTERN pattern ],ServerServer management commands,Returns a list of command names.
+COMMANDLOG,COMMANDLOG,ServerServer management commands,A container for command log commands.
+COMMANDLOG GET,COMMANDLOG GET count 〈 slow | large-request | large-reply 〉,ServerServer management commands,Returns the specified command log's entries.
+COMMANDLOG HELP,COMMANDLOG HELP,ServerServer management commands,Show helpful text about the different subcommands
+COMMANDLOG LEN,COMMANDLOG LEN 〈 slow | large-request | large-reply 〉,ServerServer management commands,Returns the number of entries in the specified type of command log.
+COMMANDLOG RESET,COMMANDLOG RESET 〈 slow | large-request | large-reply 〉,ServerServer management commands,Clears all entries from the specified type of command log.
+CONFIG,CONFIG,ServerServer management commands,A container for server configuration commands.
+CONFIG GET,CONFIG GET parameter [ parameter ... ],ServerServer management commands,Returns the effective values of configuration parameters.
+CONFIG HELP,CONFIG HELP,ServerServer management commands,Returns helpful text about the different subcommands.
+CONFIG RESETSTAT,CONFIG RESETSTAT,ServerServer management commands,Resets the server's statistics.
+CONFIG REWRITE,CONFIG REWRITE,ServerServer management commands,Persists the effective configuration to file.
+CONFIG SET,CONFIG SET parameter value [ parameter value ... ],ServerServer management commands,Sets configuration parameters in-flight.
+DBSIZE,DBSIZE,ServerServer management commands,Returns the number of keys in the database.
+DEBUG,DEBUG,ServerServer management commands,A container for debugging commands.
+FAILOVER,FAILOVER [ TO host port [ FORCE ] ] [ ABORT ] [ TIMEOUT milliseconds ],ServerServer management commands,Starts a coordinated failover from a server to one of its replicas.
+FLUSHALL,FLUSHALL [ ASYNC | SYNC ],ServerServer management commands,Removes all keys from all databases.
+FLUSHDB,FLUSHDB [ ASYNC | SYNC ],ServerServer management commands,Remove all keys from the current database.
+INFO,INFO [ section ] [ [ section ] ... ],ServerServer management commands,Returns information and statistics about the server.
+LASTSAVE,LASTSAVE,ServerServer management commands,Returns the Unix timestamp of the last successful save to disk.
+LATENCY,LATENCY,ServerServer management commands,A container for latency diagnostics commands.
+LATENCY DOCTOR,LATENCY DOCTOR,ServerServer management commands,Returns a human-readable latency analysis report.
+LATENCY GRAPH,LATENCY GRAPH event,ServerServer management commands,Returns a latency graph for an event.
+LATENCY HELP,LATENCY HELP,ServerServer management commands,Returns helpful text about the different subcommands.
+LATENCY HISTOGRAM,LATENCY HISTOGRAM [ COMMAND ] [ [ COMMAND ] ... ],ServerServer management commands,Returns the cumulative distribution of latencies of a subset or all commands.
+LATENCY HISTORY,LATENCY HISTORY event,ServerServer management commands,Returns timestamp-latency samples for an event.
+LATENCY LATEST,LATENCY LATEST,ServerServer management commands,Returns the latest latency samples for all events.
+LATENCY RESET,LATENCY RESET [ event ] [ [ event ] ... ],ServerServer management commands,Resets the latency data for one or more events.
+LOLWUT,LOLWUT VERSION 7 ... other optional arguments ...,ServerServer management commands,Displays computer art and the server version
+MEMORY,MEMORY,ServerServer management commands,A container for memory diagnostics commands.
+MEMORY DOCTOR,MEMORY DOCTOR,ServerServer management commands,Outputs a memory problems report.
+MEMORY HELP,MEMORY HELP,ServerServer management commands,Returns helpful text about the different subcommands.
+MEMORY MALLOC-STATS,MEMORY MALLOC-STATS,ServerServer management commands,Returns the allocator statistics.
+MEMORY PURGE,MEMORY PURGE,ServerServer management commands,Asks the allocator to release memory.
+MEMORY STATS,MEMORY STATS,ServerServer management commands,Returns details about memory usage.
+MEMORY USAGE,MEMORY USAGE key [ SAMPLES count ],ServerServer management commands,Estimates the memory usage of a key.
+MODULE,MODULE,ServerServer management commands,A container for module commands.
+MODULE HELP,MODULE HELP,ServerServer management commands,Returns helpful text about the different subcommands.
+MODULE LIST,MODULE LIST,ServerServer management commands,Returns all loaded modules.
+MODULE LOAD,MODULE LOAD path [ arg ] [ [ arg ] ... ],ServerServer management commands,Loads a module.
+MODULE LOADEX,MODULE LOADEX path [ CONFIG name value ] [ [ CONFIG name value ] ... ] [ ARGS args ] [ [ ARGS args ] ... ],ServerServer management commands,Loads a module using extended parameters.
+MODULE UNLOAD,MODULE UNLOAD name,ServerServer management commands,Unloads a module.
+MONITOR,MONITOR,ServerServer management commands,Listens for all requests received by the server in real-time.
+PSYNC,PSYNC replicationid offset,ServerServer management commands,An internal command used in replication.
+REPLCONF,REPLCONF,ServerServer management commands,An internal command for configuring the replication stream.
+REPLICAOF,REPLICAOF 〈 host port | NO ONE 〉,ServerServer management commands,"Configures a server as replica of another, or promotes it to a primary."
+RESTORE-ASKING,RESTORE-ASKING key ttl serialized-value [ REPLACE ] [ ABSTTL ] [ IDLETIME seconds ] [ FREQ frequency ],ServerServer management commands,An internal command for migrating keys in a cluster.
+ROLE,ROLE,ServerServer management commands,Returns the replication role.
+SAVE,SAVE,ServerServer management commands,Synchronously saves the database(s) to disk.
+SHUTDOWN,SHUTDOWN [ [ NOSAVE | SAVE ] [ NOW ] [ FORCE ] [ SAFE ] [ FAILOVER ] | ABORT ],ServerServer management commands,Synchronously saves the database(s) to disk and shuts down the server.
+SLAVEOF,SLAVEOF 〈 host port | NO ONE 〉,ServerServer management commands,"Sets a server as a replica of another, or promotes it to being a primary."
+SLOWLOG,SLOWLOG,ServerServer management commands,A container for slow log commands.
+SLOWLOG GET,SLOWLOG GET [ count ],ServerServer management commands,Returns the slow log's entries.
+SLOWLOG HELP,SLOWLOG HELP,ServerServer management commands,Show helpful text about the different subcommands
+SLOWLOG LEN,SLOWLOG LEN,ServerServer management commands,Returns the number of entries in the slow log.
+SLOWLOG RESET,SLOWLOG RESET,ServerServer management commands,Clears all entries from the slow log.
+SWAPDB,SWAPDB 0 1,ServerServer management commands,Swaps two databases.
+SYNC,SYNC,ServerServer management commands,An internal command used in replication.
+TIME,TIME,ServerServer management commands,Returns the server time.
+SADD,SADD key member [ member ... ],SetOperations on the Set data type,Adds one or more members to a set. Creates the key if it doesn't exist.
+SCARD,SCARD key,SetOperations on the Set data type,Returns the number of members in a set.
+SDIFF,SDIFF key [ key ... ],SetOperations on the Set data type,Returns the difference of multiple sets.
+SDIFFSTORE,SDIFFSTORE destination key [ key ... ],SetOperations on the Set data type,Stores the difference of multiple sets in a key.
+SINTER,SINTER key [ key ... ],SetOperations on the Set data type,Returns the intersect of multiple sets.
+SINTERCARD,SINTERCARD numkeys key [ key ... ] [ LIMIT limit ],SetOperations on the Set data type,Returns the number of members of the intersect of multiple sets.
+SINTERSTORE,SINTERSTORE destination key [ key ... ],SetOperations on the Set data type,Stores the intersect of multiple sets in a key.
+SISMEMBER,SISMEMBER key member,SetOperations on the Set data type,Determines whether a member belongs to a set.
+SMEMBERS,SMEMBERS key,SetOperations on the Set data type,Returns all members of a set.
+SMISMEMBER,SMISMEMBER key member [ member ... ],SetOperations on the Set data type,Determines whether multiple members belong to a set.
+SMOVE,SMOVE source destination member,SetOperations on the Set data type,Moves a member from one set to another.
+SPOP,SPOP key [ count ],SetOperations on the Set data type,Returns one or more random members from a set after removing them. Deletes the set if the last member was popped.
+SRANDMEMBER,SRANDMEMBER key [ count ],SetOperations on the Set data type,Get one or multiple random members from a set
+SREM,SREM key member [ member ... ],SetOperations on the Set data type,Removes one or more members from a set. Deletes the set if the last member was removed.
+SSCAN,SSCAN key cursor [ MATCH pattern ] [ COUNT count ],SetOperations on the Set data type,Iterates over members of a set.
+SUNION,SUNION key [ key ... ],SetOperations on the Set data type,Returns the union of multiple sets.
+SUNIONSTORE,SUNIONSTORE destination key [ key ... ],SetOperations on the Set data type,Stores the union of multiple sets in a key.
+BZMPOP,BZMPOP timeout numkeys key [ key ... ] 〈 MIN | MAX 〉 [ COUNT count ],Sorted SetOperations on the Sorted Set data type,Removes and returns a member by score from one or more sorted sets. Blocks until a member is available otherwise. Deletes the sorted set if the last element was popped.
+BZPOPMAX,BZPOPMAX key [ key ... ] timeout,Sorted SetOperations on the Sorted Set data type,Removes and returns the member with the highest score from one or more sorted sets. Blocks until a member available otherwise.  Deletes the sorted set if the last element was popped.
+BZPOPMIN,BZPOPMIN key [ key ... ] timeout,Sorted SetOperations on the Sorted Set data type,Removes and returns the member with the lowest score from one or more sorted sets. Blocks until a member is available otherwise. Deletes the sorted set if the last element was popped.
+ZADD,ZADD key [ NX | XX ] [ GT | LT ] [ CH ] [ INCR ] score member [ score member ... ],Sorted SetOperations on the Sorted Set data type,"Adds one or more members to a sorted set, or updates their scores. Creates the key if it doesn't exist."
+ZCARD,ZCARD key,Sorted SetOperations on the Sorted Set data type,Returns the number of members in a sorted set.
+ZCOUNT,ZCOUNT key min max,Sorted SetOperations on the Sorted Set data type,Returns the count of members in a sorted set that have scores within a range.
+ZDIFF,ZDIFF numkeys key [ key ... ] [ WITHSCORES ],Sorted SetOperations on the Sorted Set data type,Returns the difference between multiple sorted sets.
+ZDIFFSTORE,ZDIFFSTORE destination numkeys key [ key ... ],Sorted SetOperations on the Sorted Set data type,Stores the difference of multiple sorted sets in a key.
+ZINCRBY,ZINCRBY key increment member,Sorted SetOperations on the Sorted Set data type,Increments the score of a member in a sorted set.
+ZINTER,ZINTER numkeys key [ key ... ] [ WEIGHTS weight ] [ [ WEIGHTS weight ] ... ] [ AGGREGATE SUM | MIN | MAX ] [ WITHSCORES ],Sorted SetOperations on the Sorted Set data type,Returns the intersect of multiple sorted sets.
+ZINTERCARD,ZINTERCARD numkeys key [ key ... ] [ LIMIT limit ],Sorted SetOperations on the Sorted Set data type,Returns the number of members of the intersect of multiple sorted sets.
+ZINTERSTORE,ZINTERSTORE destination numkeys key [ key ... ] [ WEIGHTS weight ] [ [ WEIGHTS weight ] ... ] [ AGGREGATE SUM | MIN | MAX ],Sorted SetOperations on the Sorted Set data type,Stores the intersect of multiple sorted sets in a key.
+ZLEXCOUNT,ZLEXCOUNT key min max,Sorted SetOperations on the Sorted Set data type,Returns the number of members in a sorted set within a lexicographical range.
+ZMPOP,ZMPOP numkeys key [ key ... ] 〈 MIN | MAX 〉 [ COUNT count ],Sorted SetOperations on the Sorted Set data type,Returns the highest- or lowest-scoring members from one or more sorted sets after removing them. Deletes the sorted set if the last member was popped.
+ZMSCORE,ZMSCORE key member [ member ... ],Sorted SetOperations on the Sorted Set data type,Returns the score of one or more members in a sorted set.
+ZPOPMAX,ZPOPMAX key [ count ],Sorted SetOperations on the Sorted Set data type,Returns the highest-scoring members from a sorted set after removing them. Deletes the sorted set if the last member was popped.
+ZPOPMIN,ZPOPMIN key [ count ],Sorted SetOperations on the Sorted Set data type,Returns the lowest-scoring members from a sorted set after removing them. Deletes the sorted set if the last member was popped.
+ZRANDMEMBER,ZRANDMEMBER key [ count [ WITHSCORES ] ],Sorted SetOperations on the Sorted Set data type,Returns one or more random members from a sorted set.
+ZRANGE,ZRANGE zset (1 5 BYSCORE,Sorted SetOperations on the Sorted Set data type,Returns members in a sorted set within a range of indexes.
+ZRANGEBYLEX,ZRANGEBYLEX key min max [ LIMIT offset count ],Sorted SetOperations on the Sorted Set data type,Returns members in a sorted set within a lexicographical range.
+ZRANGEBYSCORE,ZRANGEBYSCORE zset (1 5,Sorted SetOperations on the Sorted Set data type,Returns members in a sorted set within a range of scores.
+ZRANGESTORE,ZRANGESTORE dst src min max [ BYSCORE | BYLEX ] [ REV ] [ LIMIT offset count ],Sorted SetOperations on the Sorted Set data type,Stores a range of members from sorted set in a key.
+ZRANK,ZRANK key member [ WITHSCORE ],Sorted SetOperations on the Sorted Set data type,Returns the index of a member in a sorted set ordered by ascending scores.
+ZREM,ZREM key member [ member ... ],Sorted SetOperations on the Sorted Set data type,Removes one or more members from a sorted set. Deletes the sorted set if all members were removed.
+ZREMRANGEBYLEX,ZREMRANGEBYLEX key min max,Sorted SetOperations on the Sorted Set data type,Removes members in a sorted set within a lexicographical range. Deletes the sorted set if all members were removed.
+ZREMRANGEBYRANK,ZREMRANGEBYRANK key start stop,Sorted SetOperations on the Sorted Set data type,Removes members in a sorted set within a range of indexes. Deletes the sorted set if all members were removed.
+ZREMRANGEBYSCORE,ZREMRANGEBYSCORE key min max,Sorted SetOperations on the Sorted Set data type,Removes members in a sorted set within a range of scores. Deletes the sorted set if all members were removed.
+ZREVRANGE,ZREVRANGE key start stop [ WITHSCORES ],Sorted SetOperations on the Sorted Set data type,Returns members in a sorted set within a range of indexes in reverse order.
+ZREVRANGEBYLEX,ZREVRANGEBYLEX key max min [ LIMIT offset count ],Sorted SetOperations on the Sorted Set data type,Returns members in a sorted set within a lexicographical range in reverse order.
+ZREVRANGEBYSCORE,ZREVRANGEBYSCORE key max min [ WITHSCORES ] [ LIMIT offset count ],Sorted SetOperations on the Sorted Set data type,Returns members in a sorted set within a range of scores in reverse order.
+ZREVRANK,ZREVRANK key member [ WITHSCORE ],Sorted SetOperations on the Sorted Set data type,Returns the index of a member in a sorted set ordered by descending scores.
+ZSCAN,ZSCAN key cursor [ MATCH pattern ] [ COUNT count ] [ NOSCORES ],Sorted SetOperations on the Sorted Set data type,Iterates over members and scores of a sorted set.
+ZSCORE,ZSCORE key member,Sorted SetOperations on the Sorted Set data type,Returns the score of a member in a sorted set.
+ZUNION,ZUNION numkeys key [ key ... ] [ WEIGHTS weight ] [ [ WEIGHTS weight ] ... ] [ AGGREGATE SUM | MIN | MAX ] [ WITHSCORES ],Sorted SetOperations on the Sorted Set data type,Returns the union of multiple sorted sets.
+ZUNIONSTORE,ZUNIONSTORE destination numkeys key [ key ... ] [ WEIGHTS weight ] [ [ WEIGHTS weight ] ... ] [ AGGREGATE SUM | MIN | MAX ],Sorted SetOperations on the Sorted Set data type,Stores the union of multiple sorted sets in a key.
+XACK,XACK key group ID [ ID ... ],StreamOperations on the Stream data type,Returns the number of messages that were successfully acknowledged by the consumer group member of a stream.
+XADD,XADD mystream MAXLEN ~ 1000 * ... entry fields here ...,StreamOperations on the Stream data type,Appends a new message to a stream. Creates the key if it doesn't exist.
+XAUTOCLAIM,XAUTOCLAIM key group consumer min-idle-time start [ COUNT count ] [ JUSTID ],StreamOperations on the Stream data type,"Changes, or acquires, ownership of messages in a consumer group, as if the messages were delivered to as consumer group member."
+XCLAIM,XCLAIM key group consumer min-idle-time ID [ ID ... ] [ IDLE ms ] [ TIME unix-time-milliseconds ] [ RETRYCOUNT count ] [ FORCE ] [ JUSTID ] [ LASTID lastid ],StreamOperations on the Stream data type,"Changes, or acquires, ownership of a message in a consumer group, as if the message was delivered a consumer group member."
+XDEL,XDEL key ID [ ID ... ],StreamOperations on the Stream data type,Returns the number of messages after removing them from a stream.
+XGROUP,XGROUP,StreamOperations on the Stream data type,A container for consumer groups commands.
+XGROUP CREATE,XGROUP CREATE mystream mygroup 0,StreamOperations on the Stream data type,Creates a consumer group.
+XGROUP CREATECONSUMER,XGROUP CREATECONSUMER key group consumer,StreamOperations on the Stream data type,Creates a consumer in a consumer group.
+XGROUP DELCONSUMER,XGROUP DELCONSUMER key group consumer,StreamOperations on the Stream data type,Deletes a consumer from a consumer group.
+XGROUP DESTROY,XGROUP DESTROY key group,StreamOperations on the Stream data type,Destroys a consumer group.
+XGROUP HELP,XGROUP HELP,StreamOperations on the Stream data type,Returns helpful text about the different subcommands.
+XGROUP SETID,XGROUP SETID mystream mygroup 0,StreamOperations on the Stream data type,Sets the last-delivered ID of a consumer group.
+XINFO,XINFO,StreamOperations on the Stream data type,A container for stream introspection commands.
+XINFO CONSUMERS,XINFO CONSUMERS key group,StreamOperations on the Stream data type,Returns a list of the consumers in a consumer group.
+XINFO GROUPS,XINFO GROUPS key,StreamOperations on the Stream data type,Returns a list of the consumer groups of a stream.
+XINFO HELP,XINFO HELP,StreamOperations on the Stream data type,Returns helpful text about the different subcommands.
+XINFO STREAM,XINFO STREAM key [ FULL [ COUNT count ] ],StreamOperations on the Stream data type,Returns information about a stream.
+XLEN,XLEN key,StreamOperations on the Stream data type,Return the number of messages in a stream.
+XPENDING,XPENDING key group [ [ IDLE min-idle-time ] start end count [ consumer ] ],StreamOperations on the Stream data type,Returns the information and entries from a stream consumer group's pending entries list.
+XRANGE,XRANGE key start end [ COUNT count ],StreamOperations on the Stream data type,Returns the messages from a stream within a range of IDs.
+XREAD,XREAD [ COUNT count ] [ BLOCK milliseconds ] STREAMS key [ key ... ] ID [ ID ... ],StreamOperations on the Stream data type,Returns messages from multiple streams with IDs greater than the ones requested. Blocks until a message is available otherwise.
+XREADGROUP,XREADGROUP GROUP group consumer [ COUNT count ] [ BLOCK milliseconds ] [ NOACK ] STREAMS key [ key ... ] ID [ ID ... ],StreamOperations on the Stream data type,Returns new or historical messages from a stream for a consumer in a group. Blocks until a message is available otherwise.
+XREVRANGE,XREVRANGE somestream + -,StreamOperations on the Stream data type,Returns the messages from a stream within a range of IDs in reverse order.
+XSETID,XSETID key last-id [ ENTRIESADDED entries-added ] [ MAXDELETEDID max-deleted-id ],StreamOperations on the Stream data type,An internal command for replicating stream values.
+XTRIM,XTRIM mystream MAXLEN 1000,StreamOperations on the Stream data type,Deletes messages from the beginning of a stream.
+APPEND,"APPEND timeseries ""fixed-size sample""",StringOperations on the String data type,Appends a string to the value of a key. Creates the key if it doesn't exist.
+DECR,DECR key,StringOperations on the String data type,Decrements the integer value of a key by one. Uses 0 as initial value if the key doesn't exist.
+DECRBY,DECRBY key decrement,StringOperations on the String data type,Decrements a number from the integer value of a key. Uses 0 as initial value if the key doesn't exist.
+DELIFEQ,DELIFEQ mykey abc123,StringOperations on the String data type,Delete key if value matches string.
+GET,GET key,StringOperations on the String data type,Returns the string value of a key.
+GETDEL,GETDEL key,StringOperations on the String data type,Returns the string value of a key after deleting the key.
+GETEX,GETEX key [ EX seconds | PX milliseconds | EXAT unix-time-seconds | PXAT unix-time-milliseconds | PERSIST ],StringOperations on the String data type,Returns the string value of a key after setting its expiration time.
+GETRANGE,GETRANGE key start end,StringOperations on the String data type,Returns a substring of the string stored at a key.
+GETSET,GETSET key value,StringOperations on the String data type,Returns the previous string value of a key after setting it to a new value.
+INCR,INCR key,StringOperations on the String data type,Increments the integer value of a key by one. Uses 0 as initial value if the key doesn't exist.
+INCRBY,INCRBY key increment,StringOperations on the String data type,Increments the integer value of a key by a number. Uses 0 as initial value if the key doesn't exist.
+INCRBYFLOAT,INCRBYFLOAT key increment,StringOperations on the String data type,Increment the floating point value of a key by a number. Uses 0 as initial value if the key doesn't exist.
+LCS,LCS key1 key2 [ LEN ] [ IDX ] [ MINMATCHLEN min-match-len ] [ WITHMATCHLEN ],StringOperations on the String data type,Finds the longest common substring.
+MGET,MGET key [ key ... ],StringOperations on the String data type,Atomically returns the string values of one or more keys.
+MSET,MSET key value [ key value ... ],StringOperations on the String data type,Atomically creates or modifies the string values of one or more keys.
+MSETNX,MSETNX key value [ key value ... ],StringOperations on the String data type,Atomically modifies the string values of one or more keys only when all keys don't exist.
+PSETEX,PSETEX key milliseconds value,StringOperations on the String data type,Sets both string value and expiration time in milliseconds of a key. The key is created if it doesn't exist.
+SET,SET key value [ NX | XX | IFEQ comparison-value ] [ GET ] [ EX seconds | PX milliseconds | EXAT unix-time-seconds | PXAT unix-time-milliseconds | KEEPTTL ],StringOperations on the String data type,"Sets the string value of a key, ignoring its type. The key is created if it doesn't exist."
+SETEX,SETEX key seconds value,StringOperations on the String data type,Sets the string value and expiration time of a key. Creates the key if it doesn't exist.
+SETNX,SETNX lock.foo <current Unix time + lock timeout + 1>,StringOperations on the String data type,Set the string value of a key only when the key doesn't exist.
+SETRANGE,SETRANGE key offset value,StringOperations on the String data type,Overwrites a part of a string value with another by an offset. Creates the key if it doesn't exist.
+STRLEN,STRLEN key,StringOperations on the String data type,Returns the length of a string value.
+SUBSTR,SUBSTR key start end,StringOperations on the String data type,Returns a substring from a string value.
+DISCARD,DISCARD,TransactionsValkey Transaction management,Discards a transaction.
+EXEC,EXEC,TransactionsValkey Transaction management,Executes all commands in a transaction.
+MULTI,MULTI,TransactionsValkey Transaction management,Starts a transaction.
+UNWATCH,UNWATCH,TransactionsValkey Transaction management,Forgets about watched keys of a transaction.
+WATCH,WATCH key [ key ... ],TransactionsValkey Transaction management,Monitors changes to keys to determine the execution of a transaction.
